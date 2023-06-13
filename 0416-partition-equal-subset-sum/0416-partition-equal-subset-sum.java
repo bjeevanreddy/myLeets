@@ -10,7 +10,9 @@ class Solution {
             return false;
         }
          Boolean dp[][] = new Boolean[nums.length+1][sum/2+1];
-        return subSet1(nums,nums.length-1,sum/2,dp);
+        // return subSet1(nums,nums.length-1,sum/2,dp);
+        
+        return subset2(nums,sum/2);
     }
     
     static boolean subSet(int[] nums, int n, int sum){
@@ -29,7 +31,8 @@ class Solution {
         return subSet(nums,n-1,sum) || subSet(nums,n-1,sum-nums[n]);
     }
     
-     static boolean subSet1(int[] nums, int n, int sum,Boolean[][] dp){
+    //recurion + memoization
+    static boolean subSet1(int[] nums, int n, int sum,Boolean[][] dp){
            
          
         
@@ -50,4 +53,32 @@ class Solution {
         
         return dp[n][sum] = subSet1(nums,n-1,sum,dp) || subSet1(nums,n-1,sum-nums[n],dp);
     }
+    
+    //dp
+    
+    
+    static boolean subset2(int[] nums, int sum){
+        
+        boolean dp[][] = new boolean[nums.length+1][sum+1];
+        
+        for(int i=0;i<nums.length;i++){
+            dp[i][0] = true;
+        }
+        
+        for(int i=1;i<=nums.length;i++){
+            for(int j=1;j<=sum;j++){
+                
+                if(nums[i-1]>j){
+                     dp[i][j]=dp[i-1][j];
+                }
+                else{
+                    dp[i][j]  = dp[i-1][j] || dp[i-1][j-nums[i-1]];
+                }
+                
+            }
+        }
+        
+        return dp[nums.length][sum];
+    }
+    
 }
