@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isAnagram1(String X, String Y) {
+    public boolean isAnagram(String X, String Y) {
         	if(X.length()!= Y.length()){
 				return false;
 			}
@@ -19,22 +19,25 @@ class Solution {
 					return false;
 				}
 				else{
-					map.put(Y.charAt(i),map.get(Y.charAt(i))-1);
+                    if( map.get(Y.charAt(i))!=null && map.get(Y.charAt(i))==1){
+                        map.remove(Y.charAt(i));
+                    }
+					else map.put(Y.charAt(i),map.get(Y.charAt(i))-1);
 				}
 			}
 		
 		
-		for(Map.Entry<Character, Integer> entry: map.entrySet()){
-			if(entry.getValue()!=0){
-				return false;
-			}
-		}
+		// for(Map.Entry<Character, Integer> entry: map.entrySet()){
+		// 	if(entry.getValue()!=0){
+		// 		return false;
+		// 	}
+		// }
 		
-		return true;
+		return map.isEmpty();
 			
 	}
     
-    public boolean isAnagram(String X, String Y) {
+    public boolean isAnagram1(String X, String Y) {
         	
 		
 			if(X.length()!= Y.length()){
