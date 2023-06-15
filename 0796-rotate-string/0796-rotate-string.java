@@ -33,7 +33,7 @@ class Solution {
     
     int i=0;
     while(i<x){
-        X=X.substring(1)+X.substring(0,1);
+        X=X.substring(1)+X.charAt(0);
         if(X.equals(Y)){
             return true;
         }
