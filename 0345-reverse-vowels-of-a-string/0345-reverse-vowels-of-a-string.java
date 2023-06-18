@@ -6,23 +6,24 @@ class Solution {
         int l=s.length()-1;
         char[] c= s.toCharArray();
         while(b<l){
-            
-            // boolean first= isVowel(c[b]);
-            // boolean second = isVowel(c[l]);
-            while(b<l && !isVowel(c[b])){
+            // while(b<l && !isVowel(c[b])){
+            //     b++;
+            // }
+            // while(b<l && !isVowel(c[l])){
+            //     l--;
+            // }
+            if(b<l && !isVowel(c[b])){
                 b++;
-                // continue;
+                continue;
             }
-            while(b<l && !isVowel(c[l])){
+            if(b<l && !isVowel(c[l])){
                 l--;
-                // continue;
+                continue;
             }
             swap(b,l,c);
             b++;
-            l--;
-           
-        }
-        
+            l--;         
+        } 
         return String.valueOf(c);
     }
     
