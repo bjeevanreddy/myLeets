@@ -5,7 +5,7 @@ class Solution {
         int b=0;
         int[] arr=new int[26];
         
-        Map<Character,Integer> map = new LinkedHashMap<>();
+        Map<Character,Integer> map = new HashMap<>();
         
         while(b<s.length()){
             
