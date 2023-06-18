@@ -13,7 +13,7 @@ class Solution {
     return num;
 }
     
-    public int addDigits(int num) {
+    public int addDigits2(int num) {
         int sum=0;
         while(num>0){
             int rem = num%10;
@@ -27,4 +27,21 @@ class Solution {
         }
     return sum;
 }
+    
+    
+     public int addDigits(int num) {
+        int sum=0;
+         
+         if(num<10){
+             return num;
+         }
+        while(num>0){
+            int rem = num%10;
+            sum+=rem;
+            num/=10;
+        }
+         return addDigits(sum);
+            
+        }
+    
 }
