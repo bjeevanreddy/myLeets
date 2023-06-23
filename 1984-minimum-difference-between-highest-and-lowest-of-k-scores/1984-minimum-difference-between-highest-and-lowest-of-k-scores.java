@@ -8,7 +8,6 @@ class Solution {
             if(j-i+1<k){
                 j++;
             }else{
-            System.out.println(j);
             min = Math.min(min, nums[j]-nums[i]);
             i++;
             j=i;
