@@ -24,7 +24,7 @@ class Solution {
                 }
             }
         }
-       return dp[n][amount] != Integer.MAX_VALUE-1 ?  dp[n][amount] :-1;
+       return dp[n][amount] >= Integer.MAX_VALUE-1 ?   -1:dp[n][amount];
     }
 }
 
