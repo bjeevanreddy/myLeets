@@ -11,7 +11,7 @@ class Solution {
                 j++;
             }
             if(j-i+1>=k){
-                String div = val.substring(i,i+k);
+                String div = val.substring(i,j+1);
                 // if(div.charAt(0)=='0'){
                 //     val= div.substring(1);
                 // }
