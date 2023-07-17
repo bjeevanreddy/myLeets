@@ -1,5 +1,7 @@
 class Solution {
-    public int[] sortArrayByParityII(int[] nums) {
+    
+    // using extra array
+    public int[] sortArrayByParityII1(int[] nums) {
         int k=0;
         int o=1;
         int[] res = new int[nums.length];
@@ -13,6 +15,30 @@ class Solution {
             }
         }
         return res;
+    }
+    
+     // using in-place swaps
+    public int[] sortArrayByParityII(int[] nums) {
+        int e=0;
+        int o=1;
+        int n= nums.length;
+        // int[] res = new int[nums.length];
+       while(e<n && o<n){
+            
+            while(e<n && nums[e]%2==0){
+                e=e+2;
+            }
+          
+            while(o<n && nums[o]%2!=0){
+                o=o+2;
+            }
+            if(e<nums.length && o<nums.length){
+                swap(nums, o, e);
+            }
+            
+           
+        }
+        return nums;
     }
     
     void swap(int[] nums, int i, int j){
