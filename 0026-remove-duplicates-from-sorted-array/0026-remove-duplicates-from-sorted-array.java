@@ -26,19 +26,32 @@ class Solution {
         return pos+1;
     }
     
-    public int removeDuplicates(int[] arr) {
+    public int removeDuplicates2(int[] arr) {
     int i=1;
     int j=1;
        while(j<arr.length){
            
            if(arr[j-1]!=arr[j]){
                arr[i]=arr[j];
-               i++;
-              
+               i++;   
            }
-           
            // arr[i++]=arr[j];
            j++;
+       }
+        return i;
+    }
+     public int removeDuplicates(int[] arr) {
+    int i=1;
+    int j=1;
+       while(j<arr.length){
+           
+           if( arr[j-1]==arr[j]){
+               // arr[i]=arr[j];
+               j++;   
+           }
+           else{arr[i++]=arr[j];
+           j++;
+               }
        }
         return i;
     }
