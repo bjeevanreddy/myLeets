@@ -24,7 +24,8 @@ class Solution {
         }
         
         
-        boolean left  = hasPathSum(root.left, targetSum-root.val);
+        
+        boolean left  =  hasPathSum(root.left, targetSum-root.val);
         
         boolean right = hasPathSum(root.right, targetSum-root.val);
         
