@@ -11,7 +11,7 @@ class Solution {
             else if(i%5==0){
                 res.add("Buzz");
             }else{
-                res.add(i+"");
+                res.add(String.valueOf(i));
             }
             i++;
         }
