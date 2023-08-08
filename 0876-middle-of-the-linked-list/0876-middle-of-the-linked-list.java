@@ -26,7 +26,7 @@ class Solution {
         
         int mid = count/2;
         ListNode temp1 = head;
-        while(mid>0 && temp1!=null){
+        while(mid>0){
             temp1=temp1.next;
             mid--;
         }
