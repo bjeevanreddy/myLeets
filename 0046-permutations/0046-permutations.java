@@ -3,13 +3,13 @@ class Solution {
         
         List<List<Integer>> res= new ArrayList<>();
         
-        helper(nums, 0, res, new ArrayList<>());
+        helper(nums, res, new ArrayList<>());
         
         return res;
         
     }
     
-    static void helper(int[] nums, int start, List<List<Integer>> res, List<Integer> curr ){
+    static void helper(int[] nums, List<List<Integer>> res, List<Integer> curr ){
         
         
         if(curr.size()==nums.length){
@@ -22,7 +22,7 @@ class Solution {
             if(!curr.contains(nums[i])){
                 curr.add(nums[i]);
             
-            helper(nums, i+1,res,curr);
+            helper(nums,res,curr);
            
             
             curr.remove(curr.size()-1);
