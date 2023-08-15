@@ -11,7 +11,7 @@ class Solution {
             
              if(nums[s]<=nums[mid]){
                 
-                if(nums[s]<=target && target<=nums[mid]){
+                if(nums[s]<=target && target<nums[mid]){
                     e = mid-1;
                 }else{
                     s= mid+1;
@@ -19,7 +19,7 @@ class Solution {
             }
             
             else{
-                if(nums[mid]<=target && target<=nums[e]){
+                if(nums[mid]<target && target<=nums[e]){
                     s= mid+1;
                 }
                 else{
@@ -31,3 +31,8 @@ class Solution {
         return -1;
     }
 }
+
+/// [4,5,6,7,8,9,0,1,2]
+
+// 1 2 3 4 //  4 3 1 2 // 1 2 3 4
+
