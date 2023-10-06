@@ -4,6 +4,7 @@ class Solution {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> result = new ArrayList<>();
         HashMap<Integer,Integer> map = new HashMap<>();
+         double macVal =  Math.floor(nums.length/3);
         for(int i:nums){
             map.put(i, map.getOrDefault(i,0)+1);
         }
@@ -11,7 +12,7 @@ class Solution {
         q.addAll(map.entrySet()); 
         while(!q.isEmpty()){
             Map.Entry<Integer,Integer> x = q.poll();
-            if(Math.floor(nums.length/3)< x.getValue()){
+            if(macVal< x.getValue()){
                 result.add(x.getKey());
             }else{
                 break;
