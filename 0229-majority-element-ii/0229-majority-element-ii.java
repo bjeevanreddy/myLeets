@@ -16,14 +16,15 @@ class Solution {
         return result;   
     }
     
+    //HashMap
      public List<Integer> majorityElement(int[] nums) {
         List<Integer> result = new ArrayList<>();
         HashMap<Integer,Integer> map = new HashMap<>();
         double macVal =  Math.floor(nums.length/3);
-        if(nums.length==1){
-             result.add(nums[0]);
-             return result;
-         } 
+        // if(nums.length==1){
+        //      result.add(nums[0]);
+        //      return result;
+        //  } 
         for(int i:nums){
             map.put(i, map.getOrDefault(i,0)+1);
             if(map.containsKey(i) && map.get(i)!=-1){
