@@ -27,17 +27,39 @@ class Solution {
         return ans;
     }
     
-    public int minCostClimbingStairs(int[] cost) {
+    
+    // recursion
+    public int minCostClimbingStairsR(int[] cost) {
+        
+         if(cost.length==1 || cost.length==2){
+            return Math.min(cost[0], cost[1]);
+        }
+        return Math.min(solveR(cost,0),solveR(cost,1));
+    }
+    
+    int solveR(int[] cost, int start){
+        if(start>=cost.length){
+            return 0;
+        }
+       
+        int one = solveR(cost, start+1);
+        int two = solveR(cost, start+2);
+        
+        return cost[start] + Math.min(one,two);
+    }
+    
+    // Memo + Rec (top-down)
+     public int minCostClimbingStairsM(int[] cost) {
         
          if(cost.length==1 || cost.length==2){
             return Math.min(cost[0], cost[1]);
         }
         int[] dp = new int[cost.length];
         Arrays.fill(dp,-1);
-        return Math.min(solve(cost,0,dp),solve(cost,1,dp));
+        return Math.min(solveM(cost,0,dp),solveM(cost,1,dp));
     }
     
-    int solve(int[] cost, int start, int[] dp){
+    int solveM(int[] cost, int start, int[] dp){
         if(start>=cost.length){
             return 0;
         }
@@ -45,10 +67,34 @@ class Solution {
             return dp[start];
         }
        
-        int one = solve(cost, start+1,dp);
-        int two = solve(cost, start+2,dp);
+        int one = solveM(cost, start+1,dp);
+        int two = solveM(cost, start+2,dp);
         
         return dp[start] = cost[start] + Math.min(one,two);
+    }
+    
+    
+    // dynamic (bottom up)
+       public int minCostClimbingStairs(int[] cost) {
+        
+        //  if(cost.length==1 || cost.length==2){
+        //     return Math.min(cost[0], cost[1]);
+        // }
+        int[] dp = new int[cost.length];
+        dp[0] = cost[0];
+           
+        // [10,10,]
+        dp[1] = cost[1];
+       for(int i=2;i<cost.length;i++){
+           int one = dp[i-1];
+           int two = dp[i-2];
+           dp[i] = cost[i] + Math.min(one, two);
+       }
+           for(int i:dp){
+                 System.out.println(i);
+           }
+       
+        return Math.min(dp[cost.length-1],dp[cost.length-2]);
     }
     
     
