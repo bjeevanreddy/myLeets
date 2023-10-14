@@ -7,7 +7,7 @@ class Solution {
         // for(int[] row: dp){
         //     Arrays.fill(row,-1);
         // }
-       return solve(cost, time, 0, cost.length,dp);
+       return solve(cost, time, 0,0,dp);
        // return max;
     }
     
@@ -37,7 +37,7 @@ class Solution {
     int solve(int[] cost, int[] time, int start, int spent, int[][] dp){
        
         
-         if(spent<=0){
+         if(spent>= cost.length){
             return 0;
         }
         if(start==cost.length){
@@ -48,7 +48,7 @@ class Solution {
         if(dp[start][spent]!=0){
             return dp[start][spent];
         }
-        int paint =  cost[start] + solve(cost, time, start+1, spent-1-time[start],dp);
+        int paint =  cost[start] + solve(cost, time, start+1, spent+1+time[start],dp);
         
         int not = solve(cost, time, start+1, spent,dp);
         
