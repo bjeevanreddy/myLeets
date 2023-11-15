@@ -25,7 +25,7 @@ class Solution {
     }
     
     // 2 arrays - O(n) and space is n
-    public int trap(int[] height){
+    public int trap2(int[] height){
         int sum = 0;
         int l = height.length;
         
@@ -43,6 +43,35 @@ class Solution {
         
         for(int k=0;k<l;k++){
             sum += Math.min(lb[k], rb[k]) - height[k];
+        }
+        return sum;
+    }
+    
+    // two pointer approach n and 1
+    public int trap(int[] height){
+        int len = height.length;
+        int sum=0;
+        int l=0;
+        int h=len-1;
+        int lb = height[l];
+        int rb = height[h];
+        while(l<=h){
+            if(lb<=rb){
+                if(height[l]>= lb){
+                    lb = height[l];
+                }else{
+                    sum += lb - height[l];
+                }
+                l++;
+            }
+            else{
+                if(height[h]>= rb){
+                    rb = height[h];
+                }else{
+                    sum += rb - height[h];
+                }
+                h--; 
+            }
         }
         return sum;
     }
