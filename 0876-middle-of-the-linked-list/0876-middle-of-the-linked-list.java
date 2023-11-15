@@ -9,9 +9,10 @@
  * }
  */
 class Solution {
-    public ListNode middleNode(ListNode head) {
-        
-        
+    
+    // brutforce
+    public ListNode middleNode1(ListNode head) {
+
         ListNode temp = head;
         
         if(temp==null){
@@ -33,6 +34,21 @@ class Solution {
         
         return temp1;
         
+    }
+    
+    // fast and slow pointer
+    public ListNode middleNode(ListNode head) {
+
+        ListNode slow = head;
+        ListNode fast = head;
+    
+        while(fast.next!=null && fast.next.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        if(fast.next!=null) return slow.next;
+        else return slow;
         
         
         
