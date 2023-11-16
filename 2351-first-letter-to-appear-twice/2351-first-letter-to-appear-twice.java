@@ -8,6 +8,6 @@ class Solution {
                 map.put(c, c);
             }
         }
-        return new Character('0');
+        return ' ';
     }
 }
