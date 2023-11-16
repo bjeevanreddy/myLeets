@@ -1,7 +1,7 @@
 class Solution {
     
-    // brutforce
-    public int[] twoSum(int[] nums, int target) {
+    // brutforce - n^2
+    public int[] twoSum1(int[] nums, int target) {
         int arr[] = new int[2];
         for(int i=0;i<nums.length;i++){
             for(int k=i+1;k<nums.length;k++){
@@ -14,14 +14,17 @@ class Solution {
         
         return new int[]{};
     }
-     public int[] twoSum2(int[] nums, int target) {
+    
+    //using hashmap
+     public int[] twoSum(int[] nums, int target) {
          Map<Integer,Integer> map = new HashMap<>();
-          int arr[] = new int[2];
+          // int arr[] = new int[2];
         for(int i=0;i<nums.length;i++){
                 if(map.containsKey(target-nums[i])){
-                     arr[0]= map.get(target-nums[i]);
-                     arr[1]= i;
-                    return arr;
+                     // arr[0]= map.get(target-nums[i]);
+                     // arr[1]= i;
+                     return new int[]{map.get(target-nums[i]), i};
+                   
                 }
                 else{
                     map.put(nums[i],i);
@@ -29,9 +32,9 @@ class Solution {
            
         }
         
-        return arr;
+        return new int[]{};
     }
-    public int[] twoSum1(int[] nums,int target){
+    public int[] twoSum3(int[] nums,int target){
         Arrays.sort(nums);
         int[] res = new int[2];
             int i=0;
