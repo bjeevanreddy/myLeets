@@ -45,19 +45,29 @@ class Solution {
     
     public ListNode mergeTwoLists(ListNode a, ListNode b){
         
-        ListNode result = new ListNode();
+        
         
         if(a==null) return b;
         if(b==null) return a;
         if(a==null && b==null) return null;
         
+       // ListNode result = new ListNode();
+       // ------- OR ----------
+        // ----------------
+        ListNode result;
+        if(a.val<=b.val){
+            result = a;
+            a=a.next;
+        }else{
+            result = b;
+            b=b.next;
+        }
+        //----------------
         ListNode itr = result;
         while(a!=null && b!=null){
-            
             if(a.val <= b.val){
                 itr.next = a;
-                a = a.next;
-                
+                a = a.next; 
             }else{
                 itr.next = b;
                  b = b.next;
@@ -67,6 +77,6 @@ class Solution {
         if(a==null) itr.next = b;
         else itr.next = a;
         
-        return result.next;
+        return result;
     }
 }
