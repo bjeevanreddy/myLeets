@@ -1,18 +1,20 @@
 class Solution {
-    // public int[] twoSum(int[] nums, int target) {
-    //     int arr[] = new int[2];
-    //     for(int i=0;i<nums.length;i++){
-    //         for(int k=i+1;k<nums.length;k++){
-    //             if(nums[i]+nums[k]==target){
-    //                 arr[0]=i;
-    //                 arr[1]=k;
-    //             }
-    //         }
-    //     }
+    
+    // brutforce
+    public int[] twoSum(int[] nums, int target) {
+        int arr[] = new int[2];
+        for(int i=0;i<nums.length;i++){
+            for(int k=i+1;k<nums.length;k++){
+                if(nums[i]+nums[k]==target){
+                    return new int[]{i, k};
+                    
+                }
+            }
+        }
         
-    //     return arr;
-    // }
-     public int[] twoSum(int[] nums, int target) {
+        return new int[]{};
+    }
+     public int[] twoSum2(int[] nums, int target) {
          Map<Integer,Integer> map = new HashMap<>();
           int arr[] = new int[2];
         for(int i=0;i<nums.length;i++){
