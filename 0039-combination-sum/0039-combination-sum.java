@@ -15,14 +15,9 @@ class Solution {
              res.add(new ArrayList<>(temp));
              return;
          }
-         
-       
-        // if(candidates[start]>t){
-        //      helper(candidates, start+1, t,res, temp);
-        // }
         temp.add(candidates[start]);
         helper(candidates, start, t-candidates[start],res, temp);
-         temp.remove(temp.size()-1);
+        temp.remove(temp.size()-1);
         helper(candidates, start+1, t ,res, temp);  
        
      }
