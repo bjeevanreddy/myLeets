@@ -1,6 +1,6 @@
 class Solution {
     
-    //Brute Force -n^3 complexity
+    //Brute Force -n^3 complexity - TLE
     public List<List<Integer>> threeSum1(int[] nums) {
         Arrays.sort(nums);
         List<List<Integer>> res= new ArrayList<>();
