@@ -1,5 +1,5 @@
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    public int lengthOfLongestSubstring1(String s) {
 
         Set<Character> set= new HashSet<>();
         int len = 0;
@@ -69,7 +69,7 @@ class Solution {
         return max==Integer.MIN_VALUE ?0:max;
     }
     
-    public int lengthOfLongestSubstring3(String s){
+    public int lengthOfLongestSubstring(String s){
         int max = 0;
         Set<Character> set = new HashSet<>();
         int j=0;
@@ -82,7 +82,7 @@ class Solution {
                 j++;
             }
             set.add(s.charAt(i));
-            max = Math.max(max,set.size());
+            max = Math.max(max,i-j+1);
         }
         return max;
     }
