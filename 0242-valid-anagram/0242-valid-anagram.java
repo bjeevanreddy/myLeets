@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isAnagram(String X, String Y) {
+    public boolean isAnagram2(String X, String Y) {
         	if(X.length()!= Y.length()){
 				return false;
 			}
@@ -64,4 +64,35 @@ class Solution {
 			
 			
 	}
+    
+     public boolean isAnagram(String X, String Y) {
+        
+         int[] arr = new int[26];
+         
+         if(X.length()!=Y.length()){
+             return false;
+         }
+         if(X==null || Y==null){
+             return false;
+         }
+         for(int i=0;i<X.length();i++){
+             
+             arr[X.charAt(i)-'a']++;
+         }
+         
+          for(int i=0;i<Y.length();i++){
+             
+             arr[Y.charAt(i)-'a']--;
+         }
+         
+         for(int i=0;i<arr.length;i++){
+             
+             if(arr[i]>0){
+                 return  false;
+             }
+         }
+         
+         return true;
+         
+     }
 }
