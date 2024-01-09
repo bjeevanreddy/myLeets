@@ -15,7 +15,7 @@ class Solution {
         return words[0];
     }
     
-     public String longestCommonPrefix(String[] words) {
+     public String longestCommonPrefix2(String[] words) {
         int len=words.length;
 		if(len==0) return "";
 		String main= words[0];
@@ -24,20 +24,29 @@ class Solution {
 		}
 		int lastIndex=0;
 		for (int i=0;i<main.length() ;i++ ){
-			
 			char ch = main.charAt(i); // t,e,c,h,n,i
-			
 			for(int j=1;j<len;j++){
 				if(i>=words[j].length() || words[j].charAt(i)!=ch){
 					return main.substring(0,i);
 				}
 				else{
-				
 					continue;
 				}
 			}
 		}
 		return main;
+    }
+    
+    public String longestCommonPrefix(String[] arr) {
+         String pre = arr[0];
+
+        for(int i=1;i<arr.length;i++){
+            while(arr[i].indexOf(pre)!=0){
+                pre = pre.substring(0, pre.length()-1);
+            }
+        }
+
+        return pre;
     }
     
 }
