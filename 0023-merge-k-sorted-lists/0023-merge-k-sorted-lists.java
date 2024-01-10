@@ -9,7 +9,9 @@
  * }
  */
 class Solution {
-    public ListNode mergeKLists(ListNode[] lists) {
+    
+    // merge one by one time(KN) space(N)
+    public ListNode mergeKLists1(ListNode[] lists) {
          ListNode prev =  null;
         for(int i=0;i<lists.length;i++){
             prev = merge(prev, lists[i]);
@@ -18,6 +20,39 @@ class Solution {
         return prev;
     }
     
+    //Divide and Conquer
+    public ListNode mergeKLists(ListNode[] lists){
+        int len = lists.length;
+       int left = 0;
+       int right = len/2;
+        if(len==0) return null;
+        else if(len==1) return lists[0];
+        ListNode part2=null;
+        ListNode part1=null;
+        part1 = mergeDQ(lists, left, right);
+        if(right+1<=len-1){
+              part2 = mergeDQ(lists, right+1, len-1);
+        }
+      
+       ListNode result = merge(part1, part2);
+        return result;
+    }
+    
+    static ListNode mergeDQ(ListNode[] lists, int left, int right){
+        if(left==right){
+            return lists[left]!=null ? lists[left]:null;}
+        int total = right-left+1;
+        ListNode l=null;
+        ListNode r=null;
+        ListNode head= null;
+         l = mergeDQ(lists, left, left+(total/2)-1);
+         r = mergeDQ(lists, left+total/2, right);
+         head = merge(l, r);
+        return head;
+    }
+    
+    
+    // merge 2 sorted linkedlists
     static ListNode merge(ListNode a, ListNode b){
         if(a==null && b==null) return null;
         if(a==null && b!=null) return b;
