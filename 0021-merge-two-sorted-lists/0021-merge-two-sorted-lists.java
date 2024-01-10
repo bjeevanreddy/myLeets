@@ -43,7 +43,7 @@ class Solution {
         return dummy.next;
     }
     
-    public ListNode mergeTwoLists(ListNode a, ListNode b){
+    public ListNode mergeTwoLists2(ListNode a, ListNode b){
         
         
         
@@ -51,9 +51,11 @@ class Solution {
         if(b==null) return a;
         if(a==null && b==null) return null;
         
+        // creating dummy node
        // ListNode result = new ListNode();
        // ------- OR ----------
         // ----------------
+        // creating dummy node but pointing to any of the list, 
         ListNode result;
         if(a.val<=b.val){
             result = a;
@@ -78,5 +80,40 @@ class Solution {
         else itr.next = a;
         
         return result;
+    }
+    
+    
+    //prtacise
+    public ListNode mergeTwoLists(ListNode a, ListNode b){
+        
+        if(a==null && b==null) return null;
+        if(a==null) return b;
+        if(b==null) return a;
+        
+        ListNode temp = new ListNode(0);
+        
+        ListNode result = temp;
+        while(a!=null && b!=null){
+            
+            if(a.val<=b.val){
+                result.next = a;
+                a=a.next;
+            }
+            else{
+                result.next  = b;
+                b = b.next;
+            }
+            
+            result = result.next;
+        }
+        
+        if(a!=null){
+            result.next = a;
+        }else{
+            result.next = b;
+        }
+        
+        return temp.next;
+        
     }
 }
