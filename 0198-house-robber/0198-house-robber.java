@@ -22,7 +22,7 @@ class Solution {
         return Math.max(pick,notPick);
     }
     
-    public int rob(int[] nums) {
+    public int rob2(int[] nums) {
         int n= nums.length;
         if(n==0) return 0;
         int[] dp = new int[n+1];
@@ -36,5 +36,31 @@ class Solution {
         
         return dp[n];
     }
+    
+    
+    //recursion
+    public int rob3(int[] nums) {
+        return recu3(0, nums);
+    }
+    static int recu3(int s, int[] nums){
+        if(s>nums.length-1) return 0;
+        return Math.max(nums[s]+ recu3(s+2, nums) ,recu3(s+1, nums));
+    }
+    
+     //recursion + memo
+    public int rob(int[] nums) {
+        int[] dp = new int[nums.length];
+        Arrays.fill(dp,-1);
+        return recu(0, nums, dp);
+    }
+    static int recu(int s, int[] nums, int[] dp){
+        if(s>nums.length-1) return 0;
+        if(dp[s]!=-1){
+            return dp[s];
+        }
+        return dp[s] = Math.max(nums[s] + recu(s+2, nums,dp) ,recu(s+1, nums,dp));
+    }
+        
+        
 }
 
