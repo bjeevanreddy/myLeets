@@ -71,9 +71,13 @@ class Solution {
          //babad
          int begin = 0;
         int last = 0;
+         int[][] dp = new int[s.length()+1][s.length()+1];
+         for(int r[] : dp) {
+             Arrays.fill(r, -1);
+         }
          for(int i=0;i<s.length();i++){
-             int even = findEven(s, i, i+1);
-             int odd = findEven(s, i, i);
+             int even = findEven(s, i, i+1,dp);
+             int odd = findEven(s, i, i,dp);
              int maxL= Math.max(even, odd);    
              if(maxL>last-begin){
                  begin = i - (maxL-1)/2;
@@ -84,13 +88,12 @@ class Solution {
          
      }
     
-    static int findEven(String s, int st, int e){
-        
+    static int findEven(String s, int st, int e, int[][] dp){
+        if(dp[st+1][e]!=-1) return dp[st+1][e];
         while(st>=0 && e<s.length() && s.charAt(st)==s.charAt(e)){
             st--;
             e++;
         }
-        
-        return e-st-1;
+        return dp[st+1][e]=e-st-1;
     }
 }
