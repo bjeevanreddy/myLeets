@@ -10,7 +10,7 @@ class Solution {
                 res[i]= res[i/2];
             }
             else{
-                res[i] = res[i-1]+1;
+                res[i] = res[i/2]+1;
             }
         }
         
