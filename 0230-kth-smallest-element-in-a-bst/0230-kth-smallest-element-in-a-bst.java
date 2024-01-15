@@ -27,22 +27,43 @@ class Solution {
 //         l.add(r.val);
 //         helper(r.right, l);
 //     }
-    
+ 
+    // ======================================without extra arary+=======
     int c=0;
     int x=0;
-     public int kthSmallest(TreeNode root, int k) {
-        helper(root,k);
+     public int kthSmallest1(TreeNode root, int k) {
+         
+        helper1(root,k);
         return x;
     }
     
-    void helper(TreeNode r, int k){ 
+    void helper1(TreeNode r, int k){ 
         if(r==null) return;
-        helper(r.left, k);
+        helper1(r.left, k);
         c++;
         if(k == c){
             x = r.val;
             return;
         }
-        helper(r.right, k);
+        helper1(r.right, k);
     }
+    
+    //===========================
+    // proiotry queue
+    public int kthSmallest(TreeNode root, int k) {
+         PriorityQueue<Integer> q = new PriorityQueue<>((a,b) -> a-b);
+        helper(root,q);
+        while(--k > 0){
+            q.poll();
+        }
+        return q.poll();
+    }
+    
+    void helper(TreeNode r, PriorityQueue<Integer> q){ 
+        if(r==null) return;
+        helper(r.left, q);
+        q.offer(r.val);
+        helper(r.right, q);
+    }
+    
 }
