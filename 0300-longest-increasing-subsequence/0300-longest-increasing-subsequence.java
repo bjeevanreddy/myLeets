@@ -2,8 +2,6 @@ class Solution {
      int max = 0;
     public int lengthOfLIS(int[] nums) {
         int l = nums.length;
-        
-        
         int[][] dp= new int[l+1][l+1];
         for(int[] r:dp){
             Arrays.fill(r, -1);
@@ -13,7 +11,6 @@ class Solution {
     }
     
     int subSeqence(int[] nums, int start, int l,int prev, int[][] dp){
-        
         if(start==l){
             return 0;
         }
@@ -27,8 +24,6 @@ class Solution {
            
         }
         notpick = subSeqence(nums, start+1,l,prev ,dp);
-        
-        
         return dp[prev+1][start] = Math.max(pick, notpick);
     }
 }
