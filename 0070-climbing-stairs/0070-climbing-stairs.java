@@ -47,7 +47,7 @@ class Solution {
     }
     
     // bottom-up
-     public int climbStairs3(int n){
+     public int climbStairs(int n){
          int[] dp = new int[n+1];
          dp[0] = 1;
          dp[1] = 1;
@@ -57,7 +57,7 @@ class Solution {
         return dp[n];
      }
     
-     public int climbStairs(int n){
+     public int climbStairs4(int n){
          
          // int[] dp = new int[n+1];
         int prev = 1;
