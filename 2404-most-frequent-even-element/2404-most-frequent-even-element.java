@@ -54,33 +54,26 @@ class Solution {
             if(i%2==0){
                 int freq = map.getOrDefault(i, 0)+1;
                 map.put(i, freq);
-                if(freq>=maxFreq){
-                    val = freq==maxFreq ? Math.min(i, val) : i;
-                    maxFreq=freq;
+//                 if(freq>=maxFreq){
+//                     val = freq==maxFreq ? Math.min(i, val) : i;
+//                     maxFreq=freq;
                     
-                }
+//                 }
             }
         }
         
-        // PriorityQueue<Map.Entry<Integer,Integer>> pq = new PriorityQueue<>((x,y) =>{
-        //     int a = x.getValue();
-        //     int b = y.getValue();
-        //     if(b-a >0){
-        //         return 1;
-        //     }
-        //     else if(b-a <0){
-        //         return -1;
-        //     }
-        //     else{
-        //         if(x.getKey()<y.getKey()){
-        //             return x;
-        //         }else{
-        //             return y;
-        //         }
-        //     }
-        //     }
-        // });
         
-        return val;
+        PriorityQueue<Integer> pq = new PriorityQueue<>((x,y) ->{
+            int a = map.get(x);
+            int b = map.get(y);
+            if(b==a) return x.compareTo(y);
+            return b-a;
+            
+        });
+        for(Integer num:map.keySet()) {
+            pq.offer(num);
+        }
+        
+        return pq.isEmpty() ? -1 : pq.poll();
     }
 }
