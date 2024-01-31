@@ -1,5 +1,5 @@
 class Solution {
-    public String reverseVowels(String s) {
+    public String reverseVowels1(String s) {
         
         
         int b=0;
@@ -28,7 +28,30 @@ class Solution {
     }
     
     
-    static void swap(int b, int l, char[] c){
+    
+    // pratcise
+    public String reverseVowels(String s) {
+        
+        int l=0;
+        int e=s.length()-1;
+        char[] arr = s.toCharArray();
+        while(l<e ){
+             while( l<e && !isVowel(arr[l])){
+                l++;
+            }
+            while(l<e && !isVowel(arr[e])){
+                e--;
+            }
+            swap(e,l, arr);
+            l++;
+            e--;
+        }
+        
+        return new String(arr);
+   
+    }
+    
+     static void swap(int b, int l, char[] c){
         char t= c[b];
         c[b]=c[l];
         c[l]=t;
