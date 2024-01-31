@@ -12,14 +12,14 @@ class Solution {
             i++;
             j++;
         }
-        while(i<l){
-            sb.append(word1.charAt(i));
-            i++;
-        }
-        while(j<s){
-            sb.append(word2.charAt(j));
-            j++;
-        }
+        // while(i<l){
+        //     sb.append(word1.charAt(i));
+        //     i++;
+        // }
+        // while(j<s){
+        //     sb.append(word2.charAt(j));
+        //     j++;
+        // }
         return sb.toString();
         
     }
