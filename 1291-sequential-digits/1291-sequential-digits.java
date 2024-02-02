@@ -5,15 +5,24 @@ class Solution {
         int h = String.valueOf(high).length();
         List<Integer> res = new ArrayList<>();
         String s = "123456789";
-           for(;l <= h; l++){
-            for(int j = 0; j + l <= 9; j++){
-                String str = s.substring(j, j + l);
-                int num = Integer.parseInt(str);
-                if(num > high) break;
-                if(low <= num && high >= num){
-                    res.add(num);
+        for(int i=l;i<=h;i++){
+            // String fist = s.substring(0,i);
+            // // System.out.println(fist);
+            // Integer x = Integer.valueOf(fist);
+            // if(x > low && x<high){
+            //     res.add(x);
+            // }
+            for(int k = 0;k<=9-i;k++){
+                String fist = s.substring(k, k+i);
+                Integer x = Integer.valueOf(fist);
+                if(x>high) break;
+                if(low<=x && x<=high)
+                {
+                    res.add(x);
                 }
+                
             }
+            
         }
         
         return res;
