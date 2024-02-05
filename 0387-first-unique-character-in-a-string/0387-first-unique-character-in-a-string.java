@@ -24,7 +24,7 @@ class Solution {
     
     //using arra hasing
     
-     public int firstUniqChar(String s) {
+     public int firstUniqChar2(String s) {
          
          int[] arr = new int[26];
          
@@ -42,4 +42,19 @@ class Solution {
          
          return -1;
      }
+    
+      public int firstUniqChar(String s) {
+          int[] arr = new int[26];
+          char sc[] = s.toCharArray();
+          for(char c : sc){
+              arr[c-'a']++ ;
+          }
+          
+          for(int t=0;t<sc.length;t++){
+              if(arr[sc[t]-'a']==1){
+                  return t;
+              }
+          }
+          return -1;
+      }
 }
