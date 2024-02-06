@@ -59,7 +59,7 @@ class Solution {
     
     
     //pratcise
-     public List<List<String>> groupAnagrams(String[] strs){
+     public List<List<String>> groupAnagrams3(String[] strs){
          Map<String, List<String>> result = new HashMap<>();
          
          for(String s: strs){
@@ -87,5 +87,34 @@ class Solution {
     }
     
     
+    //pratcise
+    public List<List<String>> groupAnagrams(String[] strs){
+         List<List<String>> res = new ArrayList<>();
+        if(strs.length==0) return res;
+        
+        
+        HashMap<String, List<String>> map = new HashMap<>();
+        for(String s:strs){
+            String key  = getkey(s);
+            if(map.containsKey(key)){
+                map.get(key).add(s);
+            }else{
+                List<String> x = new ArrayList<>() ;
+                x.add(s);
+                map.put(key, x);
+            }
+        }
+       
+        res.addAll(map.values());
+        return res;
+    }
+    
+    String getkey(String s){
+        
+        char[] sc = s.toCharArray();
+        
+        Arrays.sort(sc);
+        return new String(sc);
+    }
     
 }
