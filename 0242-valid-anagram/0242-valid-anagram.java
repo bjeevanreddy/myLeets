@@ -65,7 +65,9 @@ class Solution {
 			
 	}
     
-     public boolean isAnagram(String X, String Y) {
+    
+    //practise 1
+     public boolean isAnagram3(String X, String Y) {
         
          int[] arr = new int[26];
          
@@ -95,4 +97,26 @@ class Solution {
          return true;
          
      }
+    
+    //practise 2
+    public boolean isAnagram(String X, String Y) {
+        
+        int[] arr = new int[26];
+        
+        if(X.length()!=Y.length()) return false;
+        
+        for(int i=0;i<X.length();i++){
+            
+            arr[X.charAt(i)-'a']++;
+            arr[Y.charAt(i)-'a']--;
+        }
+        
+        for(Integer freq: arr){
+            if(freq!=0){
+                return false;
+            }
+        }
+        return true;
+        
+    }
 }
