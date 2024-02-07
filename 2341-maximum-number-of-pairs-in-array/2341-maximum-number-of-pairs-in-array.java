@@ -11,18 +11,16 @@ class Solution {
             map.put(i, map.getOrDefault(i,0)+1);
         }
         for(Integer i: map.values()){
-            
-            if(i==1){
+        
+//              if(i%2==0){
+//                 pairs+=i/2;
+                
+//             }
+            if(i%2!=0){
                 remaining++;
-            }
-             else if(i%2==0){
-                pairs+=i/2;
                 
             }
-            else if(i%2!=0){
-                remaining++;
-                pairs+=i/2;
-            }
+            pairs+=i/2;
         }
         
         return new int[]{pairs, remaining};
